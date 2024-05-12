@@ -20,7 +20,7 @@ const Clientes = ({ navigation }) => {
             return
         }
         try {
-            const response = await fetch(`http://192.168.0.114:5000/clientes/obterClientes/${txtPesquisa}`);
+            const response = await fetch(`http://192.168.0.237:5000/clientes/obterClientes/${txtPesquisa}`);
             const dados = await response.json();
             
             if (ordenacao === 'nome') {
@@ -54,7 +54,7 @@ const Clientes = ({ navigation }) => {
 
     const botaoExcluirProduto = async (id) => {
         try {
-            const resposta = await fetch(`http://192.168.0.114:5000/clientes/excluirCliente/${id}`,
+            const resposta = await fetch(`http://192.168.0.237:5000/clientes/excluirCliente/${id}`,
                 { method: 'DELETE' })
             if (resposta.ok)
                 buscarDadosAPI()
