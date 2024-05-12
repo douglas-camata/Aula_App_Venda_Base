@@ -10,6 +10,7 @@ import BemVindo from '../BemVindo'
 import Login from '../Login'
 import MenuNavegacao from '../MenuNavegacao'
 import CadProduto from '../CadProduto'
+import CadCliente from '../CadCliente'
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +23,7 @@ const RotasTelas = () => {
                 <Stack.Screen name="Login" component={Login} options={{ headerShown:false }}/>
                 <Stack.Screen name="MenuNavegacao" component={MenuNavegacao} options={{ headerShown: false }} />
                 <Stack.Screen name="CadProduto" component={CadProduto}  />
+                <Stack.Screen name="CadCliente" component={CadCliente}  />
             </Stack.Navigator>
         </NavigationContainer>
     )
