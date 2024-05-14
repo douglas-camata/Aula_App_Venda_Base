@@ -5,6 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import { corBorda, corBranco, corPrincipal, meusEstilos } from '../../style/MeusEstilos';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Clientes = ({ navigation }) => {
     const [dadosLista, setDadosLista] = useState([]);
@@ -20,7 +21,7 @@ const Clientes = ({ navigation }) => {
             return
         }
         try {
-            const response = await fetch(`http://192.168.0.237:5000/clientes/obterClientes/${txtPesquisa}`);
+            const response = await fetch(`http://192.168.0.114:5000/clientes/obterClientes/${txtPesquisa}`);
             const dados = await response.json();
             
             if (ordenacao === 'nome') {
@@ -39,15 +40,25 @@ const Clientes = ({ navigation }) => {
     const exibirItemLista = ({ item }) => {
         return (
             <TouchableOpacity style={meusEstilos.itemLista}
-                onPress={() => navigation.navigate('CadCliente', { clienteAlterar: item })}
+                onPress={async () => {
+                    await AsyncStorage.setItem('ClienteSelecionado', JSON.stringify({
+                        id_cliente: item.id_cliente,
+                        nome: item.nome
+                    }));
+                    navigation.navigate('ComprarProduto')}
+                }
             >
                 <View style={meusEstilos.textContainer}>
                     <Text>{item.nome} - Cid.: {item.cidade}</Text>
                     <Text>Fone: {item.telefone}</Text>
                 </View>
+                <TouchableOpacity onPress={() => navigation.navigate('CadCliente', { Alterar: item })}>
+                    <MaterialIcons name="edit" size={24} color={corPrincipal} />
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => botaoExcluirProduto(item.id_cliente)}>
                     <MaterialIcons name="delete" size={24} color={corPrincipal} />
                 </TouchableOpacity>
+                
             </TouchableOpacity>
         );
     }

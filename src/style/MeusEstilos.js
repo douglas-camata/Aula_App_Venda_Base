@@ -28,6 +28,8 @@ const meusEstilos = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 40,        
+        borderColor: corBranco,
+        borderWidth: 2
     },
     textoBotao: {
         fontSize: 18,
