@@ -25,13 +25,13 @@ const ComprarProduto = ({ navigation, route }) => {
             setUsuario(UsuarioSelecionado);
 
             // Buscar produtos da API
-            let resposta = await fetch('http://192.168.0.114:5000/produtos/obterProdutos');
+            let resposta = await fetch('http://192.168.0.237:5000/produtos/obterProdutos');
             let dados = await resposta.json();
             setDadosProdutos(dados);
 
             // Buscar produtos comprados da API
             console.log('cliente', Cliente);
-            resposta = await fetch(`http://192.168.0.114:5000/vendas/obterVendasCliente/${ClienteSelecionado.id_cliente}`);
+            resposta = await fetch(`http://192.168.0.237:5000/vendas/obterVendasCliente/${ClienteSelecionado.id_cliente}`);
             dados = await resposta.json();
             setDadosProdutosComprados(dados);
 

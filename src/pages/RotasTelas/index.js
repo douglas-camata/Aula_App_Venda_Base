@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { StatusBar } from 'react-native'
 
-import { corPrincipal } from '../../style/MeusEstilos'
+import { corBranco, corPrincipal } from '../../style/MeusEstilos'
 
 //Importar aqui todas as telas de navegação Stack
 import BemVindo from '../BemVindo'
@@ -19,7 +19,16 @@ const RotasTelas = () => {
     return (
         <NavigationContainer>
             <StatusBar backgroundColor={corPrincipal} />
-            <Stack.Navigator>
+            <Stack.Navigator
+                screenOptions={{
+                    headerStyle: {
+                      backgroundColor: corPrincipal,
+                    },
+                    headerTintColor: corBranco, 
+                    headerTitleStyle: {
+                      fontWeight: 'bold',
+                    }
+                  }}>
                 <Stack.Screen name="BemVindo" component={BemVindo} options={{ headerShown:false }}/>
                 <Stack.Screen name="Login" component={Login} options={{ headerShown:false }}/>
                 <Stack.Screen name="MenuNavegacao" component={MenuNavegacao} options={{ headerShown: false }} />
