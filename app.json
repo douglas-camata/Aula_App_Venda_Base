@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b4560f4b-3c42-473c-a775-2773a210d2fb"
+      }
+    },
+    "owner": "douglas.camata"
   }
 }
