@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Notifications from 'expo-notifications'
+import { enderecoServidor } from '../../Config';
 
 //Configuração das notificações
 Notifications.setNotificationHandler({
@@ -50,7 +51,7 @@ const Home = ({ navigation }) => {
     const carregarNotificacoes = async (idUsuarioLogado) => {
         try {
             const resposta = await fetch(
-                `http://192.168.0.237:5000/notificacoes/obterNotificacoes/${idUsuarioLogado}`)
+                `${enderecoServidor}/notificacoes/obterNotificacoes/${idUsuarioLogado}`)
             const dados = await resposta.json()
             setDadosNotificacao(dados)
 

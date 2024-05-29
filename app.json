@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "AppVendas",
+    "name": "App Vendas (Base Projeto)",
     "slug": "AppVendas",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,13 +15,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon" : "./assets/icon.png"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.douglas.camata.AppVendas",
+      "icon": "./assets/icon2.png"
     },
     "web": {
       "favicon": "./assets/favicon.png"

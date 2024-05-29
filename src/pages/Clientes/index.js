@@ -6,6 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import { corBorda, corBranco, corPrincipal, meusEstilos } from '../../style/MeusEstilos';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { enderecoServidor } from '../../Config';
 
 const Clientes = ({ navigation }) => {
     const [dadosLista, setDadosLista] = useState([]);
@@ -21,7 +22,7 @@ const Clientes = ({ navigation }) => {
             return
         }
         try {
-            const response = await fetch(`http://192.168.0.237:5000/clientes/obterClientes/${txtPesquisa}`);
+            const response = await fetch(`${enderecoServidor}/clientes/obterClientes/${txtPesquisa}`);
             const dados = await response.json();
             
             if (ordenacao === 'nome') {
@@ -67,7 +68,7 @@ const Clientes = ({ navigation }) => {
 
     const botaoExcluirProduto = async (id) => {
         try {
-            const resposta = await fetch(`http://192.168.0.237:5000/clientes/excluirCliente/${id}`,
+            const resposta = await fetch(`${enderecoServidor}/clientes/excluirCliente/${id}`,
                 { method: 'DELETE' })
             if (resposta.ok)
                 buscarDadosAPI()

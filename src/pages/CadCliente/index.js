@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { corBranco, meusEstilos } from '../../style/MeusEstilos';
 import { Picker } from '@react-native-picker/picker';
+import { enderecoServidor } from '../../Config';
 
 const CadCliente = ({ navigation, route }) => {
     const [inputNome, setInputNome] = useState('')
@@ -40,11 +41,11 @@ const CadCliente = ({ navigation, route }) => {
     const botaoSalvarCliente = async () => {
         try {
             //Criando variável para apontar qual endpoint deve ir
-            let endpoint = 'http://192.168.0.237:5000/clientes/incluirCliente'
+            let endpoint = `${enderecoServidor}/clientes/incluirCliente`
             let metodo = 'POST'
 
             if (route.params && route.params.Alterar) {
-                endpoint = `http://192.168.0.237:5000/clientes/alterarCliente/${route.params.Alterar.id_cliente}`
+                endpoint = `${enderecoServidor}/clientes/alterarCliente/${route.params.Alterar.id_cliente}`
                 metodo = 'PUT'
             }
 

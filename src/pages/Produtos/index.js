@@ -5,6 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import { corBorda, corBranco, corPrincipal, meusEstilos } from '../../style/MeusEstilos';
+import { enderecoServidor } from '../../Config';
 
 const Produtos = ({ navigation }) => {
     const [dadosLista, setDadosLista] = useState([]);
@@ -20,7 +21,7 @@ const Produtos = ({ navigation }) => {
             return
         }
         try {
-            const response = await fetch(`http://192.168.0.237:5000/produtos/obterProdutos/${txtPesquisa}`);
+            const response = await fetch(`${enderecoServidor}/produtos/obterProdutos/${txtPesquisa}`);
             const dados = await response.json();
             
             if (ordenacao === 'titulo') {
@@ -57,7 +58,7 @@ const Produtos = ({ navigation }) => {
 
     const botaoExcluirProduto = async (id) => {
         try {
-            const resposta = await fetch(`http://192.168.0.200:5000/produtos/excluirProduto/${id}`,
+            const resposta = await fetch(`${enderecoServidor}/produtos/excluirProduto/${id}`,
                 { method: 'DELETE' })
             if (resposta.ok)
                 buscarDadosAPI()

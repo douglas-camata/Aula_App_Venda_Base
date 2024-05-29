@@ -6,6 +6,7 @@ import { corBranco, meusEstilos } from "../../style/MeusEstilos"
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Checkbox } from 'expo-checkbox';
+import {enderecoServidor} from '../../Config'
 
 const Login = ({ navigation }) => {
     const [tipoAcesso, setTipoAcesso] = useState('vendedor')
@@ -30,7 +31,7 @@ const Login = ({ navigation }) => {
     const botaoEntrar = async () => {
         try {
             // URL do endpoint da API de Login
-            const resposta = await fetch('http://192.168.0.237:5000/usuarios/login', {
+            const resposta = await fetch(`${enderecoServidor}/usuarios/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -59,7 +60,8 @@ const Login = ({ navigation }) => {
             }
 
         } catch (error) {
-            console.error('Erro ao realizar o login:', error)
+            console.warn('Erro ao realizar o login:', error)
+            alert(error)
         }
     }
 

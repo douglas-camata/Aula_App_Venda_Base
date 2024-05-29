@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 import { corBranco, meusEstilos } from '../../style/MeusEstilos';
+import { enderecoServidor } from '../../Config';
 
 const CadProduto = ({ navigation, route }) => {
     const [inputTitulo, setInputTitulo] = useState('')
@@ -24,11 +25,11 @@ const CadProduto = ({ navigation, route }) => {
     const botaoSalvarProduto = async () => {
         try {
             //Criando variável para apontar qual endpoint deve ir
-            let endpoint = 'http://192.168.0.237:5000/produtos/incluirProduto'
+            let endpoint = `${enderecoServidor}/produtos/incluirProduto`
             let metodo = 'POST'
 
             if (route.params && route.params.produtoAlterar) {
-                endpoint = `http://192.168.0.237:5000/produtos/alterarProduto/${route.params.produtoAlterar.ID_PRODUTO}`
+                endpoint = `${enderecoServidor}/produtos/alterarProduto/${route.params.produtoAlterar.ID_PRODUTO}`
                 metodo = 'PUT'
             }
             //Endereço do endpoint do POST

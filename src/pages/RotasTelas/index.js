@@ -21,16 +21,31 @@ const RotasTelas = () => {
             <StatusBar backgroundColor={corPrincipal} />
             <Stack.Navigator
                 screenOptions={{
-                    headerStyle:{
+                    headerStyle: {
                         backgroundColor: corPrincipal
                     },
                     headerTintColor: corBranco
                 }}
             >
-                <Stack.Screen name="BemVindo" component={BemVindo} options={{ headerShown:false }}/>
-                <Stack.Screen name="Login" component={Login} options={{ headerShown:false }}/>
+                <Stack.Screen name="BemVindo" component={BemVindo} options={{ headerShown: false }} />
+                <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="MenuNavegacao" component={MenuNavegacao} options={{ headerShown: false }} />
-                <Stack.Screen name="CadProduto" component={CadProduto}  />
+                <Stack.Screen name="CadProduto" component={CadProduto} 
+                    options={{
+                        title:"Cadastro de produtos",  //Título da Tela
+                        // headerStyle: {                 //Altera a cor do fundo 
+                        //     backgroundColor: '#f4511e' 
+                        // },
+                        // headerTintColor: '#00f',    //Altera a cor do título da tela
+                        // headerTitleStyle: {
+                        //     fontWeight: 'bold',     //Alterar titulo para negrito
+                        //     fontSize: 25
+                        // },
+                        // headerTitleAlign: 'center',  //Alinhando o titulo
+                        // headerShown: false,          //Ocultando a barra
+
+                    }}
+                />
                 <Stack.Screen name="CadCliente" component={CadCliente}  />
                 <Stack.Screen name="ComprarProduto" component={ComprarProduto}  />
             </Stack.Navigator>
